@@ -1,12 +1,12 @@
 import { db } from "@/db";
 
 export default async function ViewSnippet({ params }: { params: any }) {
+  const { id } = await params;
   const snippet = await db.snippet.findUnique({
     where: {
-      id: parseInt(params.id),
+      id: parseInt(id),
     },
   });
-  const { id } = await params;
   console.log(snippet);
   return (
     <div className="w-full h-screen bg-gray-800 absolute top-0 left-0 text-white">
